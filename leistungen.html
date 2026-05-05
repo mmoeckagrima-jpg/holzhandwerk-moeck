@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leistungen – HolzHandwerk Möck</title>
+<style>
+:root{
+--forest:#18362c;--forest-2:#245442;--forest-3:#3e725c;
+--moss:#edf4ef;--moss-2:#f7faf8;--sand:#fff5e6;
+--wood:#b87333;--wood-2:#e39a48;--ink:#1e2a25;
+--muted:#66736d;--line:#d9e6df;
+--shadow:0 24px 70px rgba(24,54,44,.18);
+--soft:0 12px 34px rgba(24,54,44,.10);
+--max:1180px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--moss-2);line-height:1.6}
+a{color:inherit}.container{width:min(92%,var(--max));margin:0 auto}
+.nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(217,230,223,.9)}
+.nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{text-decoration:none;display:flex;align-items:center;gap:14px;line-height:1.1}.brand-mark{width:42px;height:42px;border-radius:14px;background:#101614 url("haltung-logo.jpg") center/78% no-repeat;box-shadow:0 10px 26px rgba(0,0,0,.14)}.brand-text{display:grid}.brand strong{font-size:20px;color:var(--forest);letter-spacing:-.02em}.brand span{font-size:13px;color:var(--muted)}
+.nav-links{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:800;color:var(--forest)}.nav-links a{text-decoration:none}.nav-cta{padding:10px 16px;border-radius:999px;background:var(--forest);color:white!important}
+.kicker{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;color:var(--wood-2);font-size:13px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.kicker:before{content:"";width:38px;height:2px;background:var(--wood-2);border-radius:999px}
+h1{margin:0 0 24px;font-size:clamp(46px,6vw,80px);line-height:.96;letter-spacing:-.07em;color:inherit}
+h2{margin:0 0 16px;font-size:clamp(34px,4.3vw,56px);line-height:1.06;letter-spacing:-.055em;color:var(--forest)}
+h3{margin:0 0 10px;color:var(--forest);font-size:24px;line-height:1.16;letter-spacing:-.035em}
+p{margin:0;color:var(--muted)}
+.btn{min-height:54px;display:inline-flex;align-items:center;justify-content:center;padding:15px 23px;border-radius:999px;text-decoration:none;font-weight:900;transition:.18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(135deg,var(--wood-2),var(--wood));color:white;box-shadow:0 18px 38px rgba(184,115,51,.32)}
+.btn-secondary{background:rgba(255,255,255,.13);color:white;border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(10px)}
+.hero{position:relative;padding:96px 0 108px;color:white;background:linear-gradient(105deg,rgba(18,39,32,.95),rgba(24,54,44,.80),rgba(24,54,44,.35)),url("leistungen-hero.jpg") center/cover no-repeat;overflow:hidden}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:84px;background:linear-gradient(180deg,transparent,var(--moss-2));pointer-events:none}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.06fr .94fr;gap:44px;align-items:center}
+.hero-lead{font-size:clamp(20px,2vw,25px);font-weight:800;color:rgba(255,255,255,.94);max-width:760px;margin:0 0 16px}
+.hero-copy{font-size:18px;color:rgba(255,255,255,.84);max-width:720px}
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.hero-panel{border-radius:38px;padding:34px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.24);box-shadow:0 26px 70px rgba(0,0,0,.24);backdrop-filter:blur(12px)}
+.hero-panel strong{display:block;font-size:clamp(30px,3.2vw,46px);line-height:1.06;letter-spacing:-.052em}
+.hero-panel p{margin-top:18px;color:rgba(255,255,255,.82);font-size:18px}
+section{padding:96px 0}.soft{background:linear-gradient(180deg,var(--moss),#fff)}.sand{background:linear-gradient(rgba(255,245,230,.88),rgba(255,245,230,.95)),url("leistungen-ergebnis.jpg") center/cover no-repeat}.dark{background:linear-gradient(135deg,#172d25,var(--forest));color:white}
+.section-head{max-width:860px;margin-bottom:42px}.section-head p{font-size:18px;max-width:780px}.dark h2,.dark h3{color:white}.dark p{color:rgba(255,255,255,.82)}
+.grid{display:grid;gap:22px}.grid-2{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(3,1fr)}
+.card{position:relative;background:white;border:1px solid var(--line);border-radius:30px;padding:30px;box-shadow:var(--soft);overflow:hidden}
+.card:before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:linear-gradient(180deg,var(--wood-2),rgba(227,154,72,.06))}
+.card p{font-size:17px}.tag{display:inline-flex;margin-top:22px;padding:8px 12px;border-radius:999px;background:#fff2e3;color:var(--wood);font-weight:900;font-size:13px}
+.decision-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.decision{padding:34px;border-radius:34px;background:white;border:1px solid var(--line);box-shadow:var(--soft)}
+.decision h3{font-size:30px}.decision ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:13px}
+.decision li{position:relative;padding-left:30px;color:var(--muted)}
+.decision li:before{content:"✓";position:absolute;left:0;top:0;color:var(--wood);font-weight:900}
+.solution-map{display:grid;grid-template-columns:.82fr 1.18fr;gap:34px;align-items:start}
+.map-side{position:sticky;top:106px;border-radius:36px;padding:36px;background:radial-gradient(circle at 90% 20%,rgba(227,154,72,.22),transparent 16rem),var(--forest);color:white;box-shadow:var(--shadow);overflow:hidden}
+.map-side h2{color:white}.map-side p{color:rgba(255,255,255,.84);font-size:18px}
+.map-side:after{content:"";display:block;margin-top:28px;border-radius:26px;min-height:230px;background:linear-gradient(rgba(24,54,44,.24),rgba(24,54,44,.24)),url("leistungen-planung.jpg") center/cover no-repeat;border:1px solid rgba(255,255,255,.20)}
+.path-card{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start;border-radius:30px;padding:28px;background:white;border:1px solid var(--line);box-shadow:var(--soft)}
+.path-icon{height:92px;border-radius:24px;background:linear-gradient(135deg,var(--moss),#fff);display:grid;place-items:center;color:var(--wood);font-size:34px;font-weight:900}
+.path-card h3{font-size:27px}.path-card p{font-size:17px}.path-card .tag{margin-top:16px}
+.image-split{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:620px}
+.image-left{background:linear-gradient(135deg,rgba(24,54,44,.16),rgba(24,54,44,.08)),url("leistungen-werkbank.jpg") center/cover no-repeat}
+.image-right{padding:80px min(6vw,80px);display:flex;flex-direction:column;justify-content:center;background:var(--moss-2)}
+.image-right p{font-size:18px;margin-bottom:16px;max-width:650px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.compare-box{border-radius:34px;padding:34px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18)}
+.compare-box ul{margin:20px 0 0;padding-left:20px;color:rgba(255,255,255,.84)}.compare-box li{margin:8px 0}
+.detail-strip{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+.detail-main{min-height:430px;border-radius:42px;padding:42px;color:white;background:linear-gradient(135deg,rgba(24,54,44,.88),rgba(62,114,92,.50)),url("leistungen-hobel.jpg") center/cover no-repeat;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:flex-end}
+.detail-main h3{font-size:clamp(34px,4vw,52px);line-height:1.04;letter-spacing:-.055em;color:white}.detail-main p{color:rgba(255,255,255,.88);max-width:720px}
+.side-stack{display:grid;gap:24px}.mini-card{min-height:128px;padding:26px;border-radius:28px;background:white;border:1px solid var(--line);box-shadow:var(--soft)}
+.quality-band{padding:0;background:#fff}
+.quality-layout{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.quality-img{background:linear-gradient(135deg,rgba(24,54,44,.10),rgba(24,54,44,.04)),url("leistungen-detail.jpg") center/cover no-repeat}
+.quality-text{padding:80px min(6vw,80px);display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 90% 15%,rgba(227,154,72,.15),transparent 22rem),#fff}
+.quality-text p{font-size:18px;margin-bottom:16px;max-width:620px}
+.cta{background:radial-gradient(circle at 20% 20%,rgba(227,154,72,.25),transparent 24rem),linear-gradient(135deg,#172d25,var(--forest));color:white}.cta-box{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:44px;border-radius:42px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);box-shadow:var(--shadow)}.cta h2{color:white}.cta p{color:rgba(255,255,255,.86);max-width:760px}
+.footer{padding:76px 0;background:radial-gradient(circle at 86% 18%,rgba(227,154,72,.14),transparent 24rem),linear-gradient(180deg,var(--moss-2),var(--moss))}.footer-card{position:relative;background:white;border:1px solid var(--line);border-radius:42px;padding:40px;box-shadow:var(--shadow);overflow:hidden}.footer-card:before{content:"";position:absolute;inset:0 0 auto 0;height:8px;background:linear-gradient(90deg,var(--wood-2),var(--forest-2))}.footer-head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding-bottom:30px;margin-bottom:30px;border-bottom:1px solid var(--line)}.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}.footer-block{padding:24px;border-radius:26px;background:var(--moss-2);border:1px solid var(--line)}.footer-block strong{display:block;margin-bottom:12px;color:var(--forest);font-size:22px}.footer-block p{margin:0 0 12px;color:var(--muted)}.footer-block a{color:var(--forest);font-weight:900;text-decoration:none}.footer-note-box{background:var(--sand)}.legal{display:flex;flex-wrap:wrap;gap:18px;justify-content:flex-end;margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;font-weight:800;color:var(--muted)}.legal a{text-decoration:none}
+
+.page-link-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:28px;
+}
+.btn-light{
+  background:white;
+  color:var(--forest);
+  border:1px solid var(--line);
+  box-shadow:var(--soft);
+}
+.dark .btn-light{
+  background:rgba(255,255,255,.12);
+  color:white;
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:none;
+}
+
+
+.mobile-menu-toggle{
+  display:none;
+  border:0;
+  background:var(--forest);
+  color:white;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:900;
+  cursor:pointer;
+}
+.mobile-nav{
+  display:none;
+  background:white;
+  border-bottom:1px solid var(--line);
+  box-shadow:var(--soft);
+}
+.mobile-nav a{
+  display:block;
+  padding:14px 24px;
+  text-decoration:none;
+  color:var(--forest);
+  font-weight:800;
+  border-top:1px solid var(--line);
+}
+.mobile-nav a.mobile-cta{
+  background:var(--forest);
+  color:white;
+}
+@media(max-width:980px){
+  .mobile-menu-toggle{display:inline-flex;align-items:center;justify-content:center}
+  .mobile-nav.open{display:block}
+}
+
+@media(max-width:980px){.hero-grid,.decision-grid,.solution-map,.image-split,.compare,.detail-strip,.quality-layout,.cta-box,.footer-head,.footer-grid{grid-template-columns:1fr}.grid-3{grid-template-columns:repeat(2,1fr)}.nav-links{display:none}.map-side{position:relative;top:auto}.image-left,.quality-img{min-height:420px}}
+@media(max-width:640px){section{padding:66px 0}.hero{padding:64px 0 90px}.grid-2,.grid-3{grid-template-columns:1fr}.path-card{grid-template-columns:1fr}.btn{width:100%}.footer-card,.cta-box,.map-side,.image-right,.quality-text{padding:26px}h1{font-size:42px}.legal{justify-content:flex-start}}
+</style>
+</head>
+<body>
+<main>
+<nav class="nav"><div class="container nav-inner"><a href="index.html" class="brand"><span class="brand-mark"></span><span class="brand-text"><strong>HolzHandwerk Möck</strong><span>Meisterbetrieb · Holzbau · Dach · Beratung</span></span></a><div class="nav-links"><a href="index.html">Start</a><a href="leistungen.html">Leistungen</a><a href="haltung.html">Haltung</a><a href="projekte.html">Projekte</a><a href="flashwall.html">Flashwall</a><a href="vertrieb.html">Vertrieb</a><a class="nav-cta" href="#kontakt">Kontakt</a></div><button class="mobile-menu-toggle" type="button" aria-label="Menü öffnen" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">Menü</button></div><div class="mobile-nav"><a href="index.html">Start</a><a href="leistungen.html">Leistungen</a><a href="haltung.html">Haltung</a><a href="projekte.html">Projekte</a><a href="flashwall.html">Flashwall</a><a href="vertrieb.html">Vertrieb</a><a class="mobile-cta" href="#kontakt">Kontakt</a></div></nav>
+
+<header class="hero">
+<div class="container hero-grid">
+<div>
+<div class="kicker">Leistungen</div>
+<h1>Welche Leistung passt zu welchem Vorhaben?</h1>
+<p class="hero-lead">Diese Seite hilft nicht nur beim Überblick. Sie ordnet ein, welche Lösung für welche Situation sinnvoll ist.</p>
+<p class="hero-copy">Holzbau, Dach, Sanierung, Reparatur, Planung oder Beratung – oft ist nicht die Leistung selbst die erste Frage, sondern die richtige Reihenfolge.</p>
+<div class="actions"><a class="btn btn-primary" href="#entscheidung">Situation einordnen</a><a class="btn btn-secondary" href="#kontakt">Projekt anfragen</a></div>
+</div>
+<aside class="hero-panel">
+<span class="kicker">Der Unterschied</span>
+<strong>Keine Liste von Arbeiten. Sondern eine Entscheidungshilfe.</strong>
+<p>Wenn klar ist, worum es wirklich geht, wird aus einer Anfrage ein sinnvoller Plan.</p>
+</aside>
+</div>
+</header>
+
+<section id="entscheidung" class="soft">
+<div class="container">
+<div class="section-head"><div class="kicker">Entscheidungshilfe</div><h2>Wo stehen Sie gerade?</h2><p>Die richtige Leistung hängt davon ab, ob Sie bauen, sanieren, reparieren, erweitern oder erst einmal Klarheit brauchen.</p></div>
+<div class="decision-grid">
+<div class="decision"><h3>Sie haben schon ein konkretes Vorhaben</h3><p>Dann geht es darum, die Umsetzung sauber vorzubereiten.</p><ul><li>Holzbau oder Dacharbeiten konkretisieren</li><li>Material und Aufbau festlegen</li><li>Details, Ablauf und Aufwand klären</li><li>Umsetzung und Koordination vorbereiten</li></ul></div>
+<div class="decision"><h3>Sie wissen noch nicht, was sinnvoll ist</h3><p>Dann ist Beratung der bessere Startpunkt.</p><ul><li>Bestand oder Idee einordnen</li><li>Optionen vergleichen</li><li>Risiken, Aufwand und Nutzen klären</li><li>erst danach über Umsetzung entscheiden</li></ul></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container solution-map">
+<div class="map-side">
+<div class="kicker">Leistungslogik</div>
+<h2>Nicht jede Anfrage braucht sofort ein Angebot.</h2>
+<p>Manchmal braucht es zuerst eine Einschätzung. Manchmal eine Planung. Manchmal eine Reparatur. Und manchmal eine komplette Umsetzung.</p>
+</div>
+<div class="grid">
+<div class="path-card"><div class="path-icon">?</div><div><h3>Unklarheit / erste Idee</h3><p>Wenn noch offen ist, was technisch, baulich oder wirtschaftlich sinnvoll ist.</p><span class="tag">Beratung & Einordnung</span></div></div>
+<div class="path-card"><div class="path-icon">⌂</div><div><h3>Neubau, Anbau oder Erweiterung</h3><p>Wenn ein Gebäude, eine Konstruktion oder ein neuer Bereich entstehen soll.</p><span class="tag">Zimmerei & Holzbau</span></div></div>
+<div class="path-card"><div class="path-icon">⌃</div><div><h3>Dach, Abdichtung oder Schaden</h3><p>Wenn es um Schutz, Reparatur, Leckage, Sanierung oder dauerhafte Dichtigkeit geht.</p><span class="tag">Dach & Abdichtung</span></div></div>
+<div class="path-card"><div class="path-icon">↻</div><div><h3>Bestand, Umbau oder Sanierung</h3><p>Wenn vorhandene Substanz erhalten, verbessert oder neu genutzt werden soll.</p><span class="tag">Sanierung & Bestand</span></div></div>
+<div class="path-card"><div class="path-icon">◇</div><div><h3>Besondere Idee oder Sonderlösung</h3><p>Wenn Standard nicht reicht und eine individuelle Lösung entstehen soll.</p><span class="tag">Projekte & Entwicklung</span></div></div>
+</div>
+</div>
+</section>
+
+<section class="image-split">
+<div class="image-left"></div>
+<div class="image-right">
+<div class="kicker">Konkrete Leistungen</div>
+<h2>Was fachlich dahintersteht.</h2>
+<p><strong>Holzbau:</strong> Holzrahmenbau, Holzständerbau, Anbau, Dachgeschoss, Gauben, Balkone, Terrassen, Innenausbau und Holzkonstruktionen.</p>
+<p><strong>Dach:</strong> Steildach, Flachdach, Reparaturen, Leckagensuche, Notabdichtung, Dachbegrünung, Bauwerksabdichtung und Sanierung.</p>
+<p><strong>Bestand:</strong> Umbau, Renovierung, Reparatur und nachträgliche Montage mit Blick auf vorhandene Substanz.</p>
+<p><strong>Planung:</strong> Detail- und Werkplanung, Bauanträge, Materialentscheidung, Ablaufklärung und Koordination.</p>
+</div>
+</section>
+
+<section class="dark">
+<div class="container">
+<div class="section-head"><div class="kicker">Einordnung</div><h2>Was eine gute Leistung von einer schnellen Leistung unterscheidet.</h2><p>Es geht nicht darum, möglichst viel anzubieten. Es geht darum, die richtige Lösung nicht zu früh zu verkürzen.</p></div>
+<div class="compare">
+<div class="compare-box"><h3>Was oft passiert</h3><ul><li>Einzelne Arbeiten werden isoliert entschieden</li><li>Material wird nur nach Preis bewertet</li><li>Spätere Nutzung wird zu spät betrachtet</li><li>Details werden erst auf der Baustelle geklärt</li></ul></div>
+<div class="compare-box"><h3>Wie es besser läuft</h3><ul><li>Bestand, Ziel und Nutzung werden zuerst verstanden</li><li>Material und Aufbau werden passend gewählt</li><li>Ablauf, Aufwand und Schnittstellen werden früh geklärt</li><li>Umsetzung folgt einer nachvollziehbaren Entscheidung</li></ul></div>
+</div>
+<div class="page-link-row"><a class="btn btn-light" href="haltung.html">Haltung dahinter ansehen</a></div>
+</div>
+</section>
+
+<section class="quality-band">
+<div class="quality-layout">
+<div class="quality-img"></div>
+<div class="quality-text">
+<div class="kicker">Präzision</div>
+<h2>Qualität entsteht dort, wo kaum jemand hinschaut.</h2>
+<p>Saubere Leistung zeigt sich nicht nur im großen Ergebnis, sondern in Linien, Anschlüssen, Materialübergängen und Entscheidungen, die später niemand mehr korrigieren möchte.</p>
+<p>Genau deshalb ist Präzision kein Extra, sondern Teil der Leistung.</p>
+</div>
+</div>
+</section>
+
+<section class="sand">
+<div class="container">
+<div class="section-head"><div class="kicker">Typische Situationen</div><h2>Woran Kunden meist wirklich scheitern.</h2><p>Nicht am Wunsch. Sondern daran, dass aus dem Wunsch noch keine klare technische Entscheidung geworden ist.</p></div>
+<div class="grid grid-3">
+<div class="card"><h3>„Wir möchten erweitern.“</h3><p>Dann geht es um Konstruktion, Anschlüsse, Genehmigung, Nutzung und Material.</p><span class="tag">Holzbau / Planung</span></div>
+<div class="card"><h3>„Das Dach macht Probleme.“</h3><p>Dann muss zuerst geklärt werden, ob Reparatur, Abdichtung oder Sanierung sinnvoll ist.</p><span class="tag">Dach / Schaden</span></div>
+<div class="card"><h3>„Der Bestand soll besser werden.“</h3><p>Dann zählt nicht nur Optik, sondern Substanz, Feuchte, Dämmung, Statik und Nutzbarkeit.</p><span class="tag">Sanierung</span></div>
+<div class="page-link-row"><a class="btn btn-primary" href="projekte.html">Typische Projekte ansehen</a></div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="detail-strip">
+<div class="detail-main"><h3>Saubere Leistung ist kein einzelner Arbeitsschritt.</h3><p>Sie entsteht, wenn Beratung, Planung, Materialwahl und Umsetzung zusammenpassen.</p></div>
+<div class="side-stack">
+<div class="mini-card"><h3>Beratung</h3><p>klärt Richtung, Optionen und sinnvolle Grenzen</p></div>
+<div class="mini-card"><h3>Planung</h3><p>macht aus der Idee einen belastbaren Ablauf</p></div>
+<div class="mini-card"><h3>Umsetzung</h3><p>bringt das Ergebnis sauber in die Realität</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<div class="container"><div class="cta-box"><div><h2>Sie wissen noch nicht, welche Leistung Sie brauchen?</h2><p>Dann ist genau das der richtige Startpunkt. Eine kurze Einordnung reicht oft, um den nächsten Schritt klar zu sehen.</p></div><a class="btn btn-primary" href="#kontakt">Unverbindlich klären</a></div></div>
+</section>
+
+<footer id="kontakt" class="footer"><div class="container"><div class="footer-card"><div class="footer-head"><div><div class="kicker">Kontakt</div><h2>Ein kurzer Austausch reicht oft für mehr Klarheit.</h2></div><a class="btn btn-primary" href="mailto:michael-moeck@gmx.de">Anfrage senden</a></div><div class="footer-grid"><div class="footer-block"><strong>HolzHandwerk Möck GmbH</strong><p>Friedhofweg 1/1<br>72415 Grosselfingen</p><p>Meisterbetrieb für Holzbau, Dach, Sanierung und Beratung.</p></div><div class="footer-block"><strong>Michael Möck</strong><p>Zimmerermeister<br>Gesellschaftergeschäftsführer</p><p><a href="tel:+4915901305530">Tel.: +49 1590 1305530</a><br><a href="mailto:michael-moeck@gmx.de">michael-moeck@gmx.de</a></p></div><div class="footer-block footer-note-box"><strong>Direkt, ehrlich, praxisnah.</strong><p>Ob erste Idee, konkretes Projekt oder offene Frage – die Einschätzung beginnt mit einem kurzen Gespräch.</p></div></div><div class="legal"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="cookies.html">Cookie-Einstellungen</a></div></div></div></footer>
+</main>
+<script src="cookie.js"></script>
+</body>
+</html>
