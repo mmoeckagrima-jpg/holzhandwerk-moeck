@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Referenzen – HolzHandwerk Möck</title>
+<style>
+:root{
+--forest:#18362c;--forest-2:#245442;--forest-3:#3e725c;
+--moss:#edf4ef;--moss-2:#f7faf8;--sand:#fff5e6;
+--wood:#b87333;--wood-2:#e39a48;--ink:#1e2a25;
+--muted:#66736d;--line:#d9e6df;
+--shadow:0 24px 70px rgba(24,54,44,.18);
+--soft:0 12px 34px rgba(24,54,44,.10);
+--max:1180px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--moss-2);line-height:1.6}
+a{color:inherit}
+.container{width:min(92%,var(--max));margin:0 auto}
+
+.nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(217,230,223,.9)}
+.nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{text-decoration:none;display:flex;align-items:center;gap:14px;line-height:1.1}
+.brand-mark{width:42px;height:42px;border-radius:14px;background:#101614 url("haltung-logo.jpg") center/78% no-repeat;box-shadow:0 10px 26px rgba(0,0,0,.14)}
+.brand-text{display:grid}
+.brand strong{font-size:20px;color:var(--forest);letter-spacing:-.02em}
+.brand span{font-size:13px;color:var(--muted)}
+.nav-links{display:flex;gap:18px;align-items:center;font-size:14px;font-weight:800;color:var(--forest)}
+.nav-links a{text-decoration:none}
+.nav-cta{padding:10px 16px;border-radius:999px;background:var(--forest);color:white!important}
+
+.mobile-menu-toggle{display:none;border:0;background:var(--forest);color:white;padding:10px 14px;border-radius:999px;font-weight:900;cursor:pointer}
+.mobile-nav{display:none;background:white;border-bottom:1px solid var(--line);box-shadow:var(--soft)}
+.mobile-nav a{display:block;padding:14px 24px;text-decoration:none;color:var(--forest);font-weight:800;border-top:1px solid var(--line)}
+.mobile-nav a.mobile-cta{background:var(--forest);color:white}
+
+.kicker{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;color:var(--wood-2);font-size:13px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.kicker:before{content:"";width:38px;height:2px;background:var(--wood-2);border-radius:999px}
+h1{margin:0 0 24px;font-size:clamp(46px,6vw,82px);line-height:.96;letter-spacing:-.07em;color:inherit}
+h2{margin:0 0 16px;font-size:clamp(34px,4.3vw,56px);line-height:1.06;letter-spacing:-.055em;color:var(--forest)}
+h3{margin:0 0 10px;color:var(--forest);font-size:25px;line-height:1.16;letter-spacing:-.035em}
+p{margin:0;color:var(--muted)}
+.btn{min-height:54px;display:inline-flex;align-items:center;justify-content:center;padding:15px 23px;border-radius:999px;text-decoration:none;font-weight:900;transition:.18s ease;border:0;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(135deg,var(--wood-2),var(--wood));color:white;box-shadow:0 18px 38px rgba(184,115,51,.32)}
+.btn-secondary{background:rgba(255,255,255,.13);color:white;border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(10px)}
+.btn-light{background:white;color:var(--forest);border:1px solid var(--line);box-shadow:var(--soft)}
+
+.hero{position:relative;padding:96px 0 108px;color:white;background:
+radial-gradient(circle at 18% 18%,rgba(227,154,72,.24),transparent 27rem),
+linear-gradient(105deg,rgba(18,39,32,.97),rgba(24,54,44,.84),rgba(24,54,44,.52));overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:48px 48px;opacity:.5}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:86px;background:linear-gradient(180deg,transparent,var(--moss-2));pointer-events:none}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.06fr .94fr;gap:48px;align-items:center}
+.hero-lead{font-size:clamp(20px,2vw,26px);font-weight:800;color:rgba(255,255,255,.94);max-width:790px;margin:0 0 16px}
+.hero-copy{font-size:18px;color:rgba(255,255,255,.84);max-width:720px}
+.hero-panel{border-radius:38px;padding:34px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.24);box-shadow:0 26px 70px rgba(0,0,0,.24);backdrop-filter:blur(12px)}
+.hero-panel strong{display:block;font-size:clamp(30px,3.2vw,46px);line-height:1.06;letter-spacing:-.052em}
+.hero-panel p{margin-top:18px;color:rgba(255,255,255,.82);font-size:18px}
+
+section{padding:96px 0}
+.soft{background:linear-gradient(180deg,var(--moss),#fff)}
+.section-head{max-width:900px;margin-bottom:42px}
+.section-head p{font-size:18px;max-width:780px}
+
+.notice{margin-top:24px;padding:22px 24px;border-radius:26px;background:var(--sand);border:1px solid #ecd7b9;color:var(--forest);box-shadow:var(--soft)}
+.notice strong{display:block;margin-bottom:6px;color:var(--forest)}
+
+.tabs-wrap{position:relative;z-index:5;margin-top:-38px}
+.tabs-panel{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;background:white;border:1px solid var(--line);border-radius:32px;box-shadow:var(--shadow);padding:22px}
+.tab-btn{border:0;border-radius:999px;padding:15px 22px;font-weight:950;cursor:pointer;background:var(--moss);color:var(--forest);transition:.18s ease}
+.tab-btn:hover{transform:translateY(-2px)}
+.tab-btn.active{background:linear-gradient(135deg,var(--wood-2),var(--wood));color:white;box-shadow:0 14px 30px rgba(184,115,51,.25)}
+
+.references{display:none}
+.references.active{display:block}
+.ref-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ref-card{position:relative;overflow:hidden;background:white;border:1px solid var(--line);border-radius:34px;box-shadow:var(--soft);display:flex;flex-direction:column;min-height:560px}
+.ref-image{min-height:210px;background:
+radial-gradient(circle at 18% 20%,rgba(227,154,72,.26),transparent 16rem),
+linear-gradient(135deg,var(--forest),var(--forest-2));position:relative}
+.ref-image.flash{background:radial-gradient(circle at 20% 20%,rgba(33,215,255,.24),transparent 14rem),radial-gradient(circle at 80% 70%,rgba(232,92,255,.18),transparent 15rem),linear-gradient(135deg,#10231d,#18362c)}
+.ref-image.vertrieb{background:radial-gradient(circle at 20% 20%,rgba(230,138,46,.28),transparent 15rem),linear-gradient(135deg,#172B23,#2E5545)}
+.ref-image:after{content:attr(data-label);position:absolute;left:22px;bottom:22px;padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.24);color:white;font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.06em;backdrop-filter:blur(8px)}
+.ref-body{padding:28px;display:flex;flex-direction:column;gap:18px;flex:1}
+.ref-meta{display:inline-flex;width:max-content;padding:8px 12px;border-radius:999px;background:#ECF8F2;color:var(--forest-2);font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.04em}
+.ref-block{padding-top:16px;border-top:1px solid var(--line)}
+.ref-block b{display:block;color:var(--forest);margin-bottom:5px}
+.ref-block p{font-size:16px}
+.ref-status{margin-top:auto;padding:14px 16px;border-radius:20px;background:var(--sand);color:var(--forest);font-weight:800;font-size:14px}
+
+.cta{background:radial-gradient(circle at 20% 20%,rgba(227,154,72,.25),transparent 24rem),linear-gradient(135deg,#172d25,var(--forest));color:white}
+.cta-box{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:44px;border-radius:42px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);box-shadow:var(--shadow)}
+.cta h2{color:white}.cta p{color:rgba(255,255,255,.86);max-width:760px}
+
+.footer{padding:76px 0;background:radial-gradient(circle at 86% 18%,rgba(227,154,72,.14),transparent 24rem),linear-gradient(180deg,var(--moss-2),var(--moss))}
+.footer-card{position:relative;background:white;border:1px solid var(--line);border-radius:42px;padding:40px;box-shadow:var(--shadow);overflow:hidden}
+.footer-card:before{content:"";position:absolute;inset:0 0 auto 0;height:8px;background:linear-gradient(90deg,var(--wood-2),var(--forest-2))}
+.footer-head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding-bottom:30px;margin-bottom:30px;border-bottom:1px solid var(--line)}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+.footer-block{padding:24px;border-radius:26px;background:var(--moss-2);border:1px solid var(--line)}
+.footer-block strong{display:block;margin-bottom:12px;color:var(--forest);font-size:22px}
+.footer-block p{margin:0 0 12px;color:var(--muted)}
+.footer-block a{color:var(--forest);font-weight:900;text-decoration:none}
+.footer-note-box{background:var(--sand)}
+.legal{display:flex;flex-wrap:wrap;gap:18px;justify-content:flex-end;margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;font-weight:800;color:var(--muted)}
+.legal a{text-decoration:none}
+
+@media(max-width:980px){
+.hero-grid,.cta-box,.footer-head,.footer-grid{grid-template-columns:1fr}
+.ref-grid{grid-template-columns:1fr 1fr}
+.nav-links{display:none}
+.mobile-menu-toggle{display:inline-flex;align-items:center;justify-content:center}
+.mobile-nav.open{display:block}
+}
+@media(max-width:640px){
+section{padding:66px 0}
+.hero{padding:64px 0 90px}
+.ref-grid{grid-template-columns:1fr}
+.btn{width:100%}
+.footer-card,.cta-box,.hero-panel{padding:26px}
+h1{font-size:42px}
+.legal{justify-content:flex-start}
+.tabs-panel{align-items:stretch}
+.tab-btn{width:100%}
+}
+
+/* ===== Neuer Referenzseiten-Aufbau ===== */
+.project-list{display:grid;grid-template-columns:1fr;gap:34px}
+.project-card{overflow:hidden;background:white;border:1px solid var(--line);border-radius:38px;box-shadow:var(--shadow)}
+.project-media{position:relative;background:#10231d}
+.project-main-img{width:100%;height:clamp(360px,56vw,720px);object-fit:cover;display:block}
+.project-content{display:grid;grid-template-columns:.82fr 1.18fr;gap:38px;padding:42px}
+.project-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.project-tag{display:inline-flex;align-items:center;width:max-content;max-width:100%;padding:8px 12px;border-radius:999px;background:#ECF8F2;color:var(--forest-2);font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.04em}
+.project-title h3{font-size:clamp(30px,3.2vw,46px);line-height:1.04;letter-spacing:-.055em;margin:0 0 16px;color:var(--forest)}
+.project-title p{font-size:17px;line-height:1.75}
+.project-copy{display:grid;gap:18px}
+.project-copy p{font-size:17px;line-height:1.82;color:#46554f}
+.project-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.project-fact{padding:16px;border-radius:20px;background:var(--moss-2);border:1px solid var(--line)}
+.project-fact b{display:block;color:var(--forest);font-size:13px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.project-fact span{color:var(--muted);font-size:15px}
+.gallery-thumbs{display:flex;gap:12px;flex-wrap:wrap;padding:18px 42px 42px}
+.gallery-thumbs img{width:128px;height:86px;object-fit:cover;border-radius:16px;border:2px solid transparent;box-shadow:0 10px 24px rgba(24,54,44,.12);cursor:pointer;transition:.18s ease;background:var(--moss)}
+.gallery-thumbs img:hover{transform:translateY(-2px);border-color:var(--wood-2)}
+.gallery-thumbs img.active-thumb{border-color:var(--wood-2)}
+.area-intro{max-width:960px;margin-bottom:40px}
+.area-intro .kicker{margin-bottom:14px}
+.area-intro p{font-size:18px;max-width:850px}
+.example-note{margin:0 0 30px;padding:20px 22px;border-radius:24px;background:var(--sand);border:1px solid #ecd7b9;color:var(--forest);box-shadow:var(--soft)}
+.example-note strong{color:var(--forest)}
+.examples-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.examples-grid .ref-card{min-height:unset}
+.examples-grid .ref-status{background:#ECF8F2}
+@media(max-width:980px){
+.project-content{grid-template-columns:1fr;padding:32px}
+.project-facts{grid-template-columns:1fr}
+.gallery-thumbs{padding:0 32px 34px}
+.examples-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+.project-card{border-radius:28px}
+.project-content{padding:24px}
+.gallery-thumbs{padding:0 24px 28px}
+.gallery-thumbs img{width:96px;height:68px;border-radius:12px}
+.project-main-img{height:330px}
+}
+
+</style>
+</head>
+
+<body>
+<main>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-text"><strong>HolzHandwerk Möck</strong><span>Meisterbetrieb · Holzbau · Dach · Beratung</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Start</a>
+      <a href="leistungen.html">Leistungen</a>
+      <a href="haltung.html">Haltung</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="referenzen.html">Referenzen</a>
+      <a href="netzwerk.html">Netzwerk</a>
+      <a href="flashwall.html">Flashwall</a>
+      <a href="vertrieb.html">Vertrieb</a>
+      <a class="nav-cta" href="#kontakt">Kontakt</a>
+    </div>
+    <button class="mobile-menu-toggle" type="button" aria-label="Menü öffnen" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">Menü</button>
+  </div>
+  <div class="mobile-nav">
+    <a href="index.html">Start</a>
+    <a href="leistungen.html">Leistungen</a>
+    <a href="haltung.html">Haltung</a>
+    <a href="projekte.html">Projekte</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="netzwerk.html">Netzwerk</a>
+    <a href="flashwall.html">Flashwall</a>
+    <a href="vertrieb.html">Vertrieb</a>
+    <a class="mobile-cta" href="#kontakt">Kontakt</a>
+  </div>
+</nav>
+
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="kicker">Referenzen</div>
+      <h1>Ausgeführte Arbeiten, bei denen Handwerk sichtbar bleibt.</h1>
+      <p class="hero-lead">Ein Einblick in Projekte von HolzHandwerk Möck – mit sauberer Ausführung, klarer Materialwirkung und Lösungen, die zum jeweiligen Gebäude passen.</p>
+      <p class="hero-copy">Die Auswahl zeigt unterschiedliche Aufgabenbereiche: Dach, Flachdach, Photovoltaik-Vorbereitung, Terrasse und individuelle Detailarbeiten im Bestand und Neubau.</p>
+    </div>
+    <aside class="hero-panel">
+      <strong>Projektqualität entsteht im Detail.</strong>
+      <p>Entscheidend ist nicht nur, dass etwas fertig wird. Entscheidend ist, ob Anschlüsse, Übergänge, Materialwirkung und Nutzung im Alltag zusammenpassen.</p>
+    </aside>
+  </div>
+</header>
+
+
+<div class="container tabs-wrap">
+  <div class="tabs-panel">
+    <button class="tab-btn active" data-tab="handwerk">Handwerk</button>
+    <button class="tab-btn" data-tab="flashwall">Flashwall</button>
+    <button class="tab-btn" data-tab="vertrieb">Vertrieb / ISEKI</button>
+  </div>
+</div>
+
+
+<section class="soft">
+  <div class="container">
+    
+    <div class="references active" id="handwerk">
+      <div class="area-intro">
+        <div class="kicker">Handwerk</div>
+        <h2>Ausgewählte Arbeiten von HolzHandwerk Möck</h2>
+        <p>Die folgenden Projekte zeigen unterschiedliche Aufgaben aus Dach, Flachdach, Außenbereich, Reparatur, Schadensaufnahme und Detailausführung. Nicht als Masse präsentiert, sondern als Einblick in handwerkliche Bandbreite und saubere Umsetzung.</p>
+      </div>
+      <div class="project-list">
+
+        <article class="project-card">
+          <div class="project-media">
+            <img id="project-main-1" class="project-main-img" src="r1_3.jpg" alt="Dachsanierung an historischer Mühle in Mössingen">
+          </div>
+          <div class="project-content">
+            <div class="project-title">
+              <div class="project-meta"><span class="project-tag">Mössingen</span><span class="project-tag">2022</span><span class="project-tag">Dachsanierung</span></div>
+              <h3>Historische Mühle: Dachsanierung mit energetischer Sanierung</h3>
+              <p>Eine mindestens 600 Jahre alte Mühle verlangt bei einer Dachsanierung mehr als reine Routine: Bestand, Funktion und neue Anforderungen müssen sauber zusammengeführt werden.</p>
+            </div>
+            <div class="project-copy">
+              <p>HolzHandwerk Möck setzte die Dachsanierung im Bestand um und verband die energetische Sanierung mit der Einbindung einer PV-Anlage.</p><p>Gerade bei historischer Bausubstanz zählt eine Ausführung, die technisch zuverlässig ist und gleichzeitig den Charakter des Gebäudes respektiert.</p>
+              <div class="project-facts"><div class="project-fact"><b>Projektart</b><span>Dachsanierung im Bestand</span></div><div class="project-fact"><b>Besonderheit</b><span>historische Mühle, mind. 600 Jahre alt</span></div><div class="project-fact"><b>Zusatz</b><span>energetisch saniert mit PV-Anlage</span></div></div>
+            </div>
+          </div>
+          <div class="gallery-thumbs"><img src="r1_3.jpg" alt="Dachsanierung an historischer Mühle in Mössingen Bild 1" class="active-thumb" onclick="swapProjectImage('project-main-1', this)"><img src="r1_2.jpg" alt="Dachsanierung an historischer Mühle in Mössingen Bild 2" class="" onclick="swapProjectImage('project-main-1', this)"><img src="r1_1.jpg" alt="Dachsanierung an historischer Mühle in Mössingen Bild 3" class="" onclick="swapProjectImage('project-main-1', this)"></div>
+        </article>
+    
+
+        <article class="project-card">
+          <div class="project-media">
+            <img id="project-main-2" class="project-main-img" src="r2_6.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie">
+          </div>
+          <div class="project-content">
+            <div class="project-title">
+              <div class="project-meta"><span class="project-tag">Böblingen</span><span class="project-tag">2023</span><span class="project-tag">Neubau-Flachdach</span></div>
+              <h3>Neubau-Flachdach mit Alwitra-Folie, Dämmaufbau und Begrünung</h3>
+              <p>Bei diesem Neubauprojekt wurde ein technisch klar aufgebautes Flachdach realisiert, bei dem Abdichtung, Dämmung, Oberfläche und Sicherheit als Gesamtsystem funktionieren müssen.</p>
+            </div>
+            <div class="project-copy">
+              <p>Ausgeführt wurde ein Flachdach in Alwitra-Folie mit 100 mm PU-Schaum-Dämmungsaufbau. Ergänzt wurde der Aufbau durch extensive Begrünung beziehungsweise Kies, Filter- und Dränmatten sowie eine standardmäßige Absturzsicherung.</p><p>Die Referenz zeigt, wie viel Präzision in einem scheinbar ruhigen Flachdach steckt: Schichtenaufbau, Entwässerung, Schutzlagen und sichtbare Oberfläche müssen sauber ineinandergreifen.</p>
+              <div class="project-facts"><div class="project-fact"><b>Projektart</b><span>Neubau-Flachdach</span></div><div class="project-fact"><b>Aufbau</b><span>Alwitra-Folie, 100 mm PU-Schaum</span></div><div class="project-fact"><b>Oberfläche</b><span>extensive Begrünung/Kies</span></div></div>
+            </div>
+          </div>
+          <div class="gallery-thumbs"><img src="r2_6.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 1" class="active-thumb" onclick="swapProjectImage('project-main-2', this)"><img src="r2_5.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 2" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_1.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 3" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_2.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 4" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_3.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 5" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_4.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 6" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_7.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 7" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_8.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 8" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_9.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 9" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_10.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 10" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_11.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 11" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_12.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 12" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_13.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 13" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_14.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 14" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_15.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 15" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_16.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 16" class="" onclick="swapProjectImage('project-main-2', this)"><img src="r2_17.jpg" alt="Neubau-Flachdach in Böblingen mit Alwitra-Folie Bild 17" class="" onclick="swapProjectImage('project-main-2', this)"></div>
+        </article>
+    
+
+        <article class="project-card">
+          <div class="project-media">
+            <img id="project-main-3" class="project-main-img" src="r3_3.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag">
+          </div>
+          <div class="project-content">
+            <div class="project-title">
+              <div class="project-meta"><span class="project-tag">Rangendingen</span><span class="project-tag">Sommer 2025</span><span class="project-tag">Terrasse</span></div>
+              <h3>Terrassenfläche mit Lärchenbelag und ruhiger Materialwirkung</h3>
+              <p>Im Außenbereich wurde eine Terrassenlösung umgesetzt, die den Wohnbereich erweitert und durch den bestätigten Lärchenbelag eine natürliche, warme Gesamtwirkung erhält.</p>
+            </div>
+            <div class="project-copy">
+              <p>Die Ausführung lebt von klarer Linienführung, sichtbarer handwerklicher Verarbeitung und der stimmigen Einbindung in die vorhandene Gebäudesituation.</p><p>Das Ergebnis wirkt bewusst zurückhaltend: sauber aufgebaut, ruhig in der Fläche und hochwertig im Materialbild – ohne unnötige Effekte.</p>
+              <div class="project-facts"><div class="project-fact"><b>Projektart</b><span>Terrassenbau</span></div><div class="project-fact"><b>Material</b><span>Lärchenbelag</span></div><div class="project-fact"><b>Zeitraum</b><span>Sommer 2025</span></div></div>
+            </div>
+          </div>
+          <div class="gallery-thumbs"><img src="r3_3.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag Bild 1" class="active-thumb" onclick="swapProjectImage('project-main-3', this)"><img src="r3_1.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag Bild 2" class="" onclick="swapProjectImage('project-main-3', this)"><img src="r3_2.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag Bild 3" class="" onclick="swapProjectImage('project-main-3', this)"><img src="r3_4.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag Bild 4" class="" onclick="swapProjectImage('project-main-3', this)"><img src="r3_5.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag Bild 5" class="" onclick="swapProjectImage('project-main-3', this)"><img src="r3_6.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag Bild 6" class="" onclick="swapProjectImage('project-main-3', this)"><img src="r3_7.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag Bild 7" class="" onclick="swapProjectImage('project-main-3', this)"><img src="r3_8.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag Bild 8" class="" onclick="swapProjectImage('project-main-3', this)"><img src="r3_9.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag Bild 9" class="" onclick="swapProjectImage('project-main-3', this)"><img src="r3_10.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag Bild 10" class="" onclick="swapProjectImage('project-main-3', this)"><img src="r3_11.jpg" alt="Terrasse in Rangendingen mit Lärchenbelag Bild 11" class="" onclick="swapProjectImage('project-main-3', this)"></div>
+        </article>
+    
+
+        <article class="project-card">
+          <div class="project-media">
+            <img id="project-main-4" class="project-main-img" src="r4_1.jpg" alt="Photovoltaik-Anlage in Schwalldorf">
+          </div>
+          <div class="project-content">
+            <div class="project-title">
+              <div class="project-meta"><span class="project-tag">Schwalldorf</span><span class="project-tag">April 2025</span><span class="project-tag">Photovoltaik</span></div>
+              <h3>Neue PV-Anlage auf bestehender Dachfläche</h3>
+              <p>In Schwalldorf wurde eine neue Photovoltaik-Anlage auf der Dachfläche umgesetzt beziehungsweise in die bestehende Dachsituation eingebunden.</p>
+            </div>
+            <div class="project-copy">
+              <p>Bei PV-Arbeiten auf dem Dach zählt nicht nur die Anlage selbst. Entscheidend ist, dass Dachfläche, Befestigung und Anschlüsse fachgerecht zusammenspielen.</p><p>Die Arbeit steht für eine moderne Nutzung der Dachfläche, bei der Energiegewinnung und handwerkliche Dachkompetenz sauber zusammengeführt werden.</p>
+              <div class="project-facts"><div class="project-fact"><b>Projektart</b><span>PV-Anlage</span></div><div class="project-fact"><b>Ort</b><span>Schwalldorf</span></div><div class="project-fact"><b>Zeitraum</b><span>April 2025</span></div></div>
+            </div>
+          </div>
+          <div class="gallery-thumbs"><img src="r4_1.jpg" alt="Photovoltaik-Anlage in Schwalldorf Bild 1" class="active-thumb" onclick="swapProjectImage('project-main-4', this)"><img src="r4_2.jpg" alt="Photovoltaik-Anlage in Schwalldorf Bild 2" class="" onclick="swapProjectImage('project-main-4', this)"></div>
+        </article>
+    
+
+        <article class="project-card">
+          <div class="project-media">
+            <img id="project-main-5" class="project-main-img" src="r5_4.jpg" alt="Flachdach-Speziallösung für Badanbau in Hechingen">
+          </div>
+          <div class="project-content">
+            <div class="project-title">
+              <div class="project-meta"><span class="project-tag">Hechingen</span><span class="project-tag">2024–2025</span><span class="project-tag">Flachdach-Sonderlösung</span></div>
+              <h3>Flachdach-Speziallösung für zweistöckigen Badanbau</h3>
+              <p>Der zweistöckige Badanbau in Hechingen stellte besondere Anforderungen an Anschlüsse, Übergänge und die Abstimmung mit der vorhandenen Gebäudesituation.</p>
+            </div>
+            <div class="project-copy">
+              <p>Über den Zeitraum von Anfang 2024 bis Mitte 2025 wurde eine individuelle Flachdach-Speziallösung umgesetzt.</p><p>Solche Arbeiten verlangen Detailgenauigkeit: Höhen, Übergänge, Schutz der Konstruktion und die Einbindung in den Bestand müssen technisch sauber gelöst werden.</p>
+              <div class="project-facts"><div class="project-fact"><b>Projektart</b><span>Flachdach-Speziallösung</span></div><div class="project-fact"><b>Objekt</b><span>zweistöckiger Badanbau</span></div><div class="project-fact"><b>Dauer</b><span>Anfang 2024 bis Mitte 2025</span></div></div>
+            </div>
+          </div>
+          <div class="gallery-thumbs"><img src="r5_4.jpg" alt="Flachdach-Speziallösung für Badanbau in Hechingen Bild 1" class="active-thumb" onclick="swapProjectImage('project-main-5', this)"><img src="r5_1.jpg" alt="Flachdach-Speziallösung für Badanbau in Hechingen Bild 2" class="" onclick="swapProjectImage('project-main-5', this)"><img src="r5_2.jpg" alt="Flachdach-Speziallösung für Badanbau in Hechingen Bild 3" class="" onclick="swapProjectImage('project-main-5', this)"><img src="r5_3.jpg" alt="Flachdach-Speziallösung für Badanbau in Hechingen Bild 4" class="" onclick="swapProjectImage('project-main-5', this)"></div>
+        </article>
+    
+
+        <article class="project-card">
+          <div class="project-media">
+            <img id="project-main-6" class="project-main-img" src="r6_2_ergebnis.jpg" alt="Balkonverkleidung mit wetterfesten Platten in Balingen">
+          </div>
+          <div class="project-content">
+            <div class="project-title">
+              <div class="project-meta"><span class="project-tag">Balingen</span><span class="project-tag">Mai 2026</span><span class="project-tag">Balkonverkleidung</span></div>
+              <h3>Balkonverkleidung mit wetterfesten Platten</h3>
+              <p>In Balingen wurde eine Balkonverkleidung umgesetzt, die Schutz, Optik und dauerhafte Nutzbarkeit miteinander verbindet.</p>
+            </div>
+            <div class="project-copy">
+              <p>Verwendet wurden wetterfeste Platten. Gerade im sichtbaren Balkonbereich fallen Funktion und Gestaltung unmittelbar zusammen.</p><p>Das Projekt zeigt eine handwerkliche Lösung, die sich ruhig in die Fassade einfügt und auf langfristige Witterungsbeständigkeit ausgelegt ist.</p>
+              <div class="project-facts"><div class="project-fact"><b>Projektart</b><span>Balkonverkleidung</span></div><div class="project-fact"><b>Materialangabe</b><span>wetterfeste Platten</span></div><div class="project-fact"><b>Zeitraum</b><span>Mai 2026</span></div></div>
+            </div>
+          </div>
+          <div class="gallery-thumbs"><img src="r6_2_ergebnis.jpg" alt="Balkonverkleidung mit wetterfesten Platten in Balingen Bild 1" class="active-thumb" onclick="swapProjectImage('project-main-6', this)"><img src="r6_1_baustelle.jpg" alt="Balkonverkleidung mit wetterfesten Platten in Balingen Bild 2" class="" onclick="swapProjectImage('project-main-6', this)"></div>
+        </article>
+    
+
+        <article class="project-card">
+          <div class="project-media">
+            <img id="project-main-7" class="project-main-img" src="r7_1_reperatur.jpg" alt="Dachreparatur und Dachreinigung als Folgeauftrag">
+          </div>
+          <div class="project-content">
+            <div class="project-title">
+              <div class="project-meta"><span class="project-tag">Herbst 2023 / Frühjahr 2024</span><span class="project-tag">Dachreparatur</span><span class="project-tag">Folgeauftrag</span></div>
+              <h3>Dachreparatur mit anschließendem Folgeauftrag zur Dachreinigung</h3>
+              <p>Aus einer Dachreparatur im Herbst 2023 entstand im Frühjahr 2024 ein Folgeauftrag zur Dachreinigung – ein sachlicher Beleg für Vertrauen in die ausgeführte Arbeit.</p>
+            </div>
+            <div class="project-copy">
+              <p>Die Reparatur konzentrierte sich auf die betroffene Dachfläche und die fachgerechte Wiederherstellung der Funktion.</p><p>Der spätere Reinigungsauftrag zeigt, dass HolzHandwerk Möck nicht nur für große Projekte, sondern auch für wiederkehrende Arbeiten am Bestand als zuverlässiger Ansprechpartner wahrgenommen wird.</p>
+              <div class="project-facts"><div class="project-fact"><b>Projektart</b><span>Dachreparatur</span></div><div class="project-fact"><b>Folgeauftrag</b><span>Dachreinigung</span></div><div class="project-fact"><b>Zeitraum</b><span>Herbst 2023 / Frühjahr 2024</span></div></div>
+            </div>
+          </div>
+          <div class="gallery-thumbs"><img src="r7_1_reperatur.jpg" alt="Dachreparatur und Dachreinigung als Folgeauftrag Bild 1" class="active-thumb" onclick="swapProjectImage('project-main-7', this)"><img src="r7_2_reinigung.jpg" alt="Dachreparatur und Dachreinigung als Folgeauftrag Bild 2" class="" onclick="swapProjectImage('project-main-7', this)"></div>
+        </article>
+    
+
+        <article class="project-card">
+          <div class="project-media">
+            <img id="project-main-8" class="project-main-img" src="r8_1.jpg" alt="Unwetterschaden in Balingen mit Drohnenaufklärung">
+          </div>
+          <div class="project-content">
+            <div class="project-title">
+              <div class="project-meta"><span class="project-tag">Balingen</span><span class="project-tag">Winter 2023</span><span class="project-tag">Unwetterschaden</span></div>
+              <h3>Unwetterschaden mit Drohnenaufklärung</h3>
+              <p>Nach einem Unwetterschaden in Balingen wurde die betroffene Dachfläche im Winter 2023 per Drohnenaufklärung geprüft.</p>
+            </div>
+            <div class="project-copy">
+              <p>Die Drohnenaufnahme ermöglicht eine schnelle und übersichtliche Einschätzung der Schadenssituation, ohne die Dachfläche unnötig betreten zu müssen.</p><p>Gerade bei Schadensfällen zählt eine klare Bestandsaufnahme: erst sauber prüfen, dann die passenden nächsten Schritte ableiten.</p>
+              <div class="project-facts"><div class="project-fact"><b>Projektart</b><span>Schadensaufnahme</span></div><div class="project-fact"><b>Methode</b><span>Drohnenaufklärung</span></div><div class="project-fact"><b>Ort / Zeit</b><span>Balingen, Winter 2023</span></div></div>
+            </div>
+          </div>
+          <div class="gallery-thumbs"><img src="r8_1.jpg" alt="Unwetterschaden in Balingen mit Drohnenaufklärung Bild 1" class="active-thumb" onclick="swapProjectImage('project-main-8', this)"></div>
+        </article>
+    
+      </div>
+    </div>
+
+    
+    <div class="references" id="flashwall">
+      <div class="area-intro">
+        <div class="kicker">Flashwall</div>
+        <h2>Interaktive Wandlösungen für Bewegung, Training und Erlebnis</h2>
+        <p>Für diesen Bereich liegen aktuell noch keine freigegebenen Projektbilder als Referenz vor. Deshalb werden hier ausschließlich beispielhafte Einsatzbereiche gezeigt.</p>
+      </div>
+      <div class="example-note"><strong>Hinweis:</strong> Die folgenden Inhalte sind Beispielanwendungen und keine veröffentlichten Kundenreferenzen.</div>
+      <div class="examples-grid">
+        <article class="ref-card">
+          <div class="ref-image flash" data-label="Flashwall"></div>
+          <div class="ref-body">
+            <span class="ref-meta">Schule & Turnhalle</span>
+            <h3>Bewegung sichtbar machen</h3>
+            <div class="ref-block"><b>Situation</b><p>Bewegungsflächen sollen Kinder und Gruppen schneller aktivieren.</p></div>
+            <div class="ref-block"><b>Ansatz</b><p>Interaktive Lichtimpulse schaffen klare Aufgaben, Reaktion und Motivation.</p></div>
+            <div class="ref-block"><b>Wirkung</b><p>Aus einer Wand wird eine aktive Trainings- und Erlebnisfläche.</p></div>
+            <div class="ref-status">Beispielanwendung</div>
+          </div>
+        </article>
+        <article class="ref-card">
+          <div class="ref-image flash" data-label="Flashwall"></div>
+          <div class="ref-body">
+            <span class="ref-meta">Verein & Training</span>
+            <h3>Reaktion, Koordination und Wettbewerb</h3>
+            <div class="ref-block"><b>Situation</b><p>Trainingsroutinen sollen abwechslungsreicher und messbarer werden.</p></div>
+            <div class="ref-block"><b>Ansatz</b><p>Lichtfelder ermöglichen Aufgaben, Zeitdruck und spielerische Wettkampfformen.</p></div>
+            <div class="ref-block"><b>Wirkung</b><p>Mehr Dynamik im Training und mehr Motivation bei wiederkehrender Nutzung.</p></div>
+            <div class="ref-status">Beispielanwendung</div>
+          </div>
+        </article>
+        <article class="ref-card">
+          <div class="ref-image flash" data-label="Flashwall"></div>
+          <div class="ref-body">
+            <span class="ref-meta">Event & Erlebnis</span>
+            <h3>Ein Blickfang, der Menschen einbindet</h3>
+            <div class="ref-block"><b>Situation</b><p>Ein Bereich soll nicht nur gesehen, sondern aktiv genutzt werden.</p></div>
+            <div class="ref-block"><b>Ansatz</b><p>Flashwall verbindet Lichtwirkung, Bewegung und unmittelbare Interaktion.</p></div>
+            <div class="ref-block"><b>Wirkung</b><p>Hohe Aufmerksamkeit und ein Erlebnis, das im Gedächtnis bleibt.</p></div>
+            <div class="ref-status">Beispielanwendung</div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    
+    <div class="references" id="vertrieb">
+      <div class="area-intro">
+        <div class="kicker">Vertrieb / ISEKI</div>
+        <h2>Geräteträger im praktischen Einsatz denken</h2>
+        <p>Für den Vertriebsbereich werden konkrete Kundenreferenzen später ergänzt. Bis dahin zeigen die Inhalte beispielhafte Einsatzsituationen, wie sie im kommunalen, gewerblichen und dienstleistungsnahen Alltag auftreten können.</p>
+      </div>
+      <div class="example-note"><strong>Hinweis:</strong> Die folgenden Inhalte sind beispielhafte Einsatzfälle und keine veröffentlichten Kundenreferenzen.</div>
+      <div class="examples-grid">
+        <article class="ref-card">
+          <div class="ref-image vertrieb" data-label="Vertrieb / ISEKI"></div>
+          <div class="ref-body">
+            <span class="ref-meta">Kommunen & Bauhof</span>
+            <h3>Ein System für wechselnde Aufgaben</h3>
+            <div class="ref-block"><b>Situation</b><p>Pflege, Transport, Reinigung und saisonale Arbeiten verteilen sich auf viele Abläufe.</p></div>
+            <div class="ref-block"><b>Ansatz</b><p>Das Einsatzprofil wird geprüft und auf passende Geräteträger-Logik übertragen.</p></div>
+            <div class="ref-block"><b>Wirkung</b><p>Mehr Übersicht, bessere Auslastung und weniger unnötige Wechsel im Alltag.</p></div>
+            <div class="ref-status">Beispielhafter Einsatzfall</div>
+          </div>
+        </article>
+        <article class="ref-card">
+          <div class="ref-image vertrieb" data-label="Vertrieb / ISEKI"></div>
+          <div class="ref-body">
+            <span class="ref-meta">Dienstleister & Facility</span>
+            <h3>Außenflächen planbarer betreuen</h3>
+            <div class="ref-block"><b>Situation</b><p>Viele kleinere Flächen, Wege und Objekte binden regelmäßig Arbeitszeit.</p></div>
+            <div class="ref-block"><b>Ansatz</b><p>Anforderungen, Wege und Aufgaben werden gemeinsam eingeordnet.</p></div>
+            <div class="ref-block"><b>Wirkung</b><p>Ein klareres Bild davon, welche Technik im Alltag wirklich entlastet.</p></div>
+            <div class="ref-status">Beispielhafter Einsatzfall</div>
+          </div>
+        </article>
+        <article class="ref-card">
+          <div class="ref-image vertrieb" data-label="Vertrieb / ISEKI"></div>
+          <div class="ref-body">
+            <span class="ref-meta">Gewerbe & Betriebe</span>
+            <h3>Pflege, Wege und Transport bündeln</h3>
+            <div class="ref-block"><b>Situation</b><p>Betriebsflächen, Höfe und Außenbereiche erzeugen wiederkehrende Aufgaben.</p></div>
+            <div class="ref-block"><b>Ansatz</b><p>Geprüft wird, ob ein Geräteträger mehrere Aufgaben sinnvoll verbinden kann.</p></div>
+            <div class="ref-block"><b>Wirkung</b><p>Weniger Einzellösungen und mehr praktische Nutzbarkeit über das Jahr.</p></div>
+            <div class="ref-status">Beispielhafter Einsatzfall</div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-box">
+      <div>
+        <h2>Sie planen ein eigenes Projekt?</h2>
+        <p>Ob Dach, Flachdach, Terrasse, Sanierung oder individuelle Detailarbeit: Ein kurzer Austausch hilft, Aufwand, Machbarkeit und sinnvolle nächste Schritte sauber einzuordnen.</p>
+      </div>
+      <a class="btn btn-primary" href="#kontakt">Projekt besprechen</a>
+    </div>
+  </div>
+</section>
+
+
+<footer id="kontakt" class="footer">
+  <div class="container">
+    <div class="footer-card">
+      <div class="footer-head">
+        <div><div class="kicker">Kontakt</div><h2>Ein kurzer Austausch reicht oft für mehr Klarheit.</h2></div>
+        <a class="btn btn-primary" href="mailto:michael-moeck@gmx.de">Anfrage senden</a>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-block"><strong>HolzHandwerk Möck GmbH</strong><p>Friedhofweg 1/1<br>72415 Grosselfingen</p><p>Meisterbetrieb für Holzbau, Dach, Sanierung und Beratung.</p></div>
+        <div class="footer-block"><strong>Michael Möck</strong><p>Zimmerermeister<br>Gesellschaftergeschäftsführer</p><p><a href="tel:+4915901305530">Tel.: +49 1590 1305530</a><br><a href="mailto:michael-moeck@gmx.de">michael-moeck@gmx.de</a></p></div>
+        <div class="footer-block footer-note-box"><strong>Direkt, ehrlich, praxisnah.</strong><p>Ob erste Idee, konkretes Projekt oder offene Frage – die Einschätzung beginnt mit einem kurzen Gespräch.</p></div>
+      </div>
+      <div class="legal"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="cookies.html">Cookie-Einstellungen</a></div>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+
+<script>
+function swapProjectImage(mainId, thumb){
+  var main = document.getElementById(mainId);
+  if(!main || !thumb) return;
+  main.src = thumb.getAttribute("src");
+  var wrap = thumb.closest(".gallery-thumbs");
+  if(wrap){
+    wrap.querySelectorAll("img").forEach(function(img){ img.classList.remove("active-thumb"); });
+    thumb.classList.add("active-thumb");
+  }
+}
+</script>
+
+<script>
+document.querySelectorAll(".tab-btn").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    document.querySelectorAll(".tab-btn").forEach(function(b){b.classList.remove("active")});
+    document.querySelectorAll(".references").forEach(function(tab){tab.classList.remove("active")});
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.tab).classList.add("active");
+  });
+});
+</script>
+<script src="cookie.js"></script>
+</body>
+</html>
